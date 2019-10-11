@@ -35,7 +35,7 @@ export const postSmurfs = smurf => {
         dispatch( { type: START_POSTING })
         axios.post(smurfsUrl, smurf)
         .then(response => dispatch( { type: POST_SUCCESS , payload: response.data }))
-        .error(error => {
+        .catch(error => {
             console.log('POST ERROR: ', error)
             dispatch( { type: POST_FAILURE , payload: error} )
         })

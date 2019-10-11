@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { fetchSmurfs } from '../actions'
+import { fetchSmurfs, postSmurfs } from '../actions'
 
 // components 
 import Smurf from './Smurf'
@@ -35,7 +35,7 @@ const mapStateToProps = state => {
     return {
         smurfs: state.smurfs,
         isFetching: state.isFetching,
-        error: state.error
+        error: state.error,
     }
 }
 
