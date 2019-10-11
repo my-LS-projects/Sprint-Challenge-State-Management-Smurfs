@@ -11,8 +11,22 @@ const SmurfList = props => {
         props.fetchSmurfs()
     }, [])
 
+    if (props.isFetching) {
+        return <h2>Loading...</h2>
+    }
+
     return (
-        <Smurf />
+        <>
+            {props.error && <p>{props.error}</p>}
+            {props.smurfs.map( smurf => 
+                <Smurf 
+                    name={smurf.name}
+                    age={smurf.age}
+                    height={smurf.height}
+                />
+                )}
+            
+        </>
     )
 }
 
