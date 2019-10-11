@@ -30,11 +30,14 @@ export const fetchSmurfs = () => {
     }
 }
 
-export const postSmurfs = () => {
+export const postSmurfs = smurf => {
     return (dispatch) => {
         dispatch( { type: START_POSTING })
-        axios.post(smurfsUrl)
-        .then(response => console.log('POST RESPONSE: ', response))
-        .error(error => console.log('POST ERROR: ', error))
+        axios.post(smurfsUrl, smurf)
+        .then(response => dispatch( { type: POST_SUCCESS , payload: response.data }))
+        .error(error => {
+            console.log('POST ERROR: ', error)
+            dispatch( { type: POST_FAILURE , payload: error} )
+        })
     }
 }
